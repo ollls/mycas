@@ -314,7 +314,8 @@ object OrderedList {
       }
 
       val curr = pred.getReference()
-      val succ = curr.get(marked)
+      
+      val succ = if ( curr != null ) curr.get(marked) else return false
 
       //marked2 for orig curr
       val orig = curr.getOrig
@@ -397,17 +398,18 @@ object OrderedList {
       {
         val status = removeFromRange_t( start, from, to, a, count, factor, merge, remove, removeFrom, done, abort, newSplit )
 
-        if ( status == false )  return false
+        //if ( status == false )  return false
     
-        if (done == true) {
+        if ( remove( 0 ) == true) {
            if (count(0) < factor/2 ) merge(0) = true
            else merge(0) = false
-
-           if ( count(0) < 2 * factor ) {
+        }
+        if ( count(0) < 2 * factor ) {
           newSplit(0) = null  //range too small, hide split
         }
-        true
+        status
       }
+      /*
       else {
         if ( count(0) < 2 * factor ) {
           newSplit(0) = null  //range too small, hide split
@@ -417,8 +419,9 @@ object OrderedList {
           false
         }
         else true
-      }
-    }
+      } */
+    //  status
+   // }
 
   
 
@@ -444,6 +447,9 @@ object OrderedList {
     val curr = pred.getReference 
     
     //curr has no succ
+
+    if ( curr == null ) return true
+
     if (  pred.eq(to) == false && curr.isLast == false ) {
 
       if (count(0) == factor)  newSplit(0) = pred
@@ -479,7 +485,11 @@ object OrderedList {
                   removeFrom(0) = pred  //save the node before removed one. we may need it for substitution in case if node was removed from reference layers
                else
                   removeFrom(0) = null //nothing to give, pred is very first already, we cannot be out of bound
-             removeFromRange_t(start, curr, to, a, count, factor, merge, remove, removeFrom, done=true, false, newSplit )
+                  //true
+
+                   if (  from.eq(to) == false && curr.isLast == false )
+                      removeFromRange_t(start, curr.getReference(), to, a, count, factor, merge, remove, removeFrom, done=true, false, newSplit )
+                   else true   
            } 
            else 
            {
