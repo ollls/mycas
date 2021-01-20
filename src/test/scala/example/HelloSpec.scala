@@ -8,7 +8,7 @@ import cas.mutable._
 
 class ListSpec extends FlatSpec with Matchers {
 
-  val NTOTAL = 2000000
+  val NTOTAL = 200000
   var startSignal : CountDownLatch = null
   var endSignal : CountDownLatch = null
 
