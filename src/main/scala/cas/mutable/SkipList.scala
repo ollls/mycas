@@ -195,7 +195,7 @@ class TwoKeysMultiValuePairOrd[ A1, A2, B ] ( val key1 : A1, val key2 : A2, val 
 //////////////////////////////////////////////////////////////////////////////////
 class SkipList[A](implicit ord: A => Ordered[A]) {
 
-  val FACTOR = 5
+  var FACTOR = 5
 
   //MARKERS
   //static sentinel nodes, we share all the last nodes across all the layers

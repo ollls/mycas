@@ -16,6 +16,9 @@ class ListSpec extends FlatSpec with Matchers {
   val es = Executors.newFixedThreadPool(1000);
   val SI = new SkipList[Int]
 
+  //linear list search about 30
+  SI.FACTOR = 10
+
 
 
   def exec[T](es: ExecutorService)(r: => T): Future[T] = es.submit(new Callable[T] {
@@ -34,7 +37,7 @@ class ListSpec extends FlatSpec with Matchers {
     println( "\n#1 memory usage: " + usedMB + " MB\n");
 
     /////////////////////////////////
-    parallel_add( )
+    parallel_add()
 
     usedMB = (rt.totalMemory() - rt.freeMemory()) / 1024 / 1024;
     println( "\n#2 memory usage: " + usedMB + " MB\n" );
@@ -44,7 +47,8 @@ class ListSpec extends FlatSpec with Matchers {
 
 
     /////////////////////////////////
-    race_and_stress()
+    //race_and_stress()
+    parallel_add()    
 
 
     usedMB = (rt.totalMemory() - rt.freeMemory()) / 1024 / 1024;
@@ -235,19 +239,37 @@ class ListSpec extends FlatSpec with Matchers {
 
   def parallel_cleanup_partial( ) : Unit = {
 
-    println( "Complete clean-up. Five parallel threads, 1st by 3, 2nd by 3, 1st by 3, 2nd by 3, 3rd by 3")
+    println( "Complete clean-up. 10 parallel threads with 1 reverse thread")
 
 
      startSignal = new CountDownLatch(1)
-     endSignal = new CountDownLatch(5)
+     endSignal = new CountDownLatch( 12 )
 
 
-     exec( es)(  rem_task_u( SI, 1, 3) )
-     exec( es)(  rem_task_u( SI, 2, 3) )
-     exec( es)(  rem_task_u( SI, 1, 3) )
-     exec( es)(  rem_task_u( SI, 2, 3) )
+     exec( es)(  rem_task_u( SI, 1, 10 ) )
+     exec( es)(  rem_task_u( SI, 11, 10 ) )
+     exec( es)(  rem_task_u( SI, 22, 10) )
+     exec( es)(  rem_task_u( SI, 33, 10) )
+     exec( es)(  rem_task_u( SI, 44, 10 ) )
 
-     exec( es)(  rem_task_u( SI, 3, 3) )
+     exec( es)(  rem_task_u( SI, 55, 10 ) )
+     exec( es)(  rem_task_u( SI, 66, 10 ) )
+     exec( es)(  rem_task_u( SI, 77, 10) )
+     exec( es)(  rem_task_u( SI, 88, 10 ) )
+     exec( es)(  rem_task_u( SI, 99, 10) )
+     exec( es)(  rem_task_u( SI, 110, 10) )
+
+     //exec( es)(  rem_task_u( SI, 1, 1) )
+
+
+     exec( es)(  rem_task_u_reverse( SI, 1, 1) )
+
+    // exec( es)(  rem_task_u( SI, 1, 3) )
+    // exec( es)(  rem_task_u( SI, 2, 3) )
+    // exec( es)(  rem_task_u( SI, 1, 3) )
+    // exec( es)(  rem_task_u( SI, 2, 3) )
+
+    // exec( es)(  rem_task_u( SI, 3, 3) )
 
      startSignal.countDown()
 
@@ -259,6 +281,7 @@ class ListSpec extends FlatSpec with Matchers {
 
     println( "*** Layers ***")
     SI.debug_print_layers()
+    SI.debug_print()
 
    // SI.foreach(  c => println( c ) )
 
