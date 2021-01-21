@@ -1,6 +1,6 @@
 # Recursive, CAS only, lock-free, generic, dynamically resized implementation of Skip List. Ordering of elements is supported by Scala’s implicit Ordered type.
 
-* It turned out to be a very interesting project ( even thou it has some ad-hoc patching, which is not done exactly as book says ).
+*It turned out to be a very interesting project ( even thou it has some ad-hoc patching, which is not done exactly as book says ).
 Please, check test cases ( sbt test ) and play with FACTOR, FACTOR means the number of linear lookup attempts in a single linked lists. 
 The whole structure can be made flat ( with 1 or 3 layers ) with factor around 1000. 
 Stability is awesome, no matter how many conflicting threads attacking the structure, it maintains all the properties and balance.
@@ -8,7 +8,7 @@ Stability is awesome, no matter how many conflicting threads attacking the struc
 Just to explain in a simple way: This is universal binary search tree, with linear lookups configured by FACTOR, 
 which can be accessed by unlimited number of threads and it uses no locks. ( so called lock-free ).
 
-It re-arranges itself according the FACTOR on add or remove. * 
+It re-arranges itself according the FACTOR on add or remove.*
 
 # Disclaimer.
 This is a fixed layout skip list, unlike most popular implementation which is a probabilistic skip list. 
