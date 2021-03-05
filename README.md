@@ -14,7 +14,7 @@ It re-arranges itself according the FACTOR on add or remove.
 
 # Disclaimer.
 This is a fixed layout skip list, unlike most popular implementation which is a probabilistic skip list. 
-There is a price in performance to maintain strict fixed layout of all the layers. It rearranges elements upon addition of a new element and there might be significant performance penalty comparing to probabilistic skip list implementation. On the other hand fixed sorted data always available directly for read/search operations and it won't require any specialized iterrators. 
+There is a price in performance to maintain strict fixed layout of all the layers. It rearranges elements upon addition of a new element and there might be a performance penalty comparing to probabilistic skip list implementation. On the other hand fixed sorted data always available directly for read/search operations and it won't require any specialized iterrators. 
 Main goal of the project  ( mostly educational ) is to apply recursive algoritms in scala for mutlti-dimensional lock-free data structures like SkipList consisting out of a layers of LazyLists.
 Project was extensively tested on 6 and 12 core machines with special attention to corner cases, like simultaneous addition and removal of neighbor elements.
 It is used for PROD business customer supporting smart quick search by agregated silos of keys pointing to the same record. 
