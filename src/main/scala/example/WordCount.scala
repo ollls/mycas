@@ -153,7 +153,7 @@ object RunMe {
       endSignal.await() 
 
 
-      SL.debug_print_layers()
+      //SL.debug_print_layers()
      
       println()
       println( "total = " + SL.count() )
@@ -183,7 +183,7 @@ object RunMe {
       //TODO: find a way to have simple find by key : String. for all the Pair classes with key String ???
       //here we need to provide entire pair to lookup.
       //Maybe we need a wrapper for all simple key String maps.
-      SL.toStream( new StringIgnoreCaseValuePair( "N", new AtomicInteger(0) )).take( 7 ).foreach( c => println( c.key ) ) 
+      //SL.toStream( new StringIgnoreCaseValuePair( "N", new AtomicInteger(0) )).take( 7 ).foreach( c => println( c.key ) ) 
 
       es.shutdown()              
 

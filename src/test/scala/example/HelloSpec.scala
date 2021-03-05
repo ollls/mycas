@@ -8,7 +8,7 @@ import cas.mutable._
 
 class ListSpec extends FlatSpec with Matchers {
 
-  val NTOTAL = 200000
+  val NTOTAL = 1020311
   var startSignal : CountDownLatch = null
   var endSignal : CountDownLatch = null
 
@@ -232,7 +232,7 @@ class ListSpec extends FlatSpec with Matchers {
     //SI.debug_print()
 
     println( "*** Layers ***")
-    SI.debug_print_layers()
+    SI.debug_print_layers1()
 
   }
 
@@ -280,8 +280,8 @@ class ListSpec extends FlatSpec with Matchers {
 
 
     println( "*** Layers ***")
-    SI.debug_print_layers()
-    SI.debug_print()
+    SI.debug_print_layers1()
+    //SI.debug_print()
 
    // SI.foreach(  c => println( c ) )
 
@@ -306,7 +306,7 @@ class ListSpec extends FlatSpec with Matchers {
 
 
     println( "*** Layers ***")
-    SI.debug_print_layers()
+    SI.debug_print_layers1()
 
 
     SI.foreach( c => println( c ) )
@@ -332,7 +332,7 @@ class ListSpec extends FlatSpec with Matchers {
 
 
     println( "*** Layers ***")
-    SI.debug_print_layers()
+    SI.debug_print_layers1()
 
 
     SI.foreach( c => println( c ) )
@@ -420,7 +420,7 @@ class ListSpec extends FlatSpec with Matchers {
 
 
     println( "*** Layers ***")
-    SI.debug_print_layers()
+    SI.debug_print_layers1()
 
   }
 
