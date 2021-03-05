@@ -1,5 +1,6 @@
 # Recursive, CAS only, lock-free, generic, dynamically resized implementation of Skip List. Ordering of elements is supported by Scala’s implicit Ordered type.
 
+Update: March, 2021 - all the fixes from zio-tls-http submitted here, it's stable<br>
 Update: Jan, 2021<br>
 Please, check test cases ( sbt test ) and play with FACTOR, FACTOR means the number of linear lookup attempts in a single linked lists. 
 The whole structure can be made flat ( with 1 or 3 layers ) with factor around 1000. 
