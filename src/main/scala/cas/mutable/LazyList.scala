@@ -6,6 +6,8 @@ package cas.mutable
 
 import java.util.concurrent.atomic.AtomicMarkableReference
 import annotation.tailrec
+import math.Ordered.orderingToOrdered
+//import math.Ordering.Implicits.infixOrderingOps
 
 object Node {
 

@@ -2,11 +2,12 @@ package example
 
 import org.scalatest._
 
+import org.scalatest.flatspec.AnyFlatSpec
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent._
 import cas.mutable._
 
-class ListSpec extends FlatSpec with Matchers {
+class ListSpec extends AnyFlatSpec { // with Matchers {
 
   val NTOTAL = 1020311
   var startSignal : CountDownLatch = null

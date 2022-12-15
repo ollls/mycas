@@ -1,4 +1,4 @@
-ThisBuild / scalaVersion     := "2.13.4"
+ThisBuild / scalaVersion     := "3.2.1"
 ThisBuild / version          := "0.1.0-SNAPSHOT"
 ThisBuild / organization     := "com.example"
 ThisBuild / organizationName := "example"
@@ -7,7 +7,7 @@ lazy val root = (project in file("."))
   .settings(
     name := "mycas",
     libraryDependencies +=
-    "org.scalatest" %% "scalatest" % "3.0.8" % Test
+    "org.scalatest" %% "scalatest" % "3.2.14" % Test
   )
 
 // Uncomment the following for publishing to Sonatype.

@@ -6,6 +6,7 @@ package cas.mutable
 
 import java.util.concurrent.atomic.AtomicReference
 import scala.collection.mutable.ListBuffer
+import math.Ordered.orderingToOrdered
 
 
 class ValReference[A](var a: A)
