@@ -1,5 +1,6 @@
 # Recursive, CAS only, lock-free, generic, dynamically resized implementation of Skip List. Ordering of elements is supported by Scala’s implicit Ordered type.
 
+Update: December, 15 2022 - ported(converted) to scala3 on branch scala3.<br>
 Update: March, 2021<br>
 All the fixes from zio-tls-http submitted here. It's good and stable, no issues expected.<br>
 Update: Jan, 2021<br>
